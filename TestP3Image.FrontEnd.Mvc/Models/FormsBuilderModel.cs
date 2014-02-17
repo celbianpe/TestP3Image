@@ -31,10 +31,25 @@ namespace TestP3Image.FrontEnd.Mvc.Models
         [Key]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
+        [Required]
+        [Display(Name = "Description")]
+        [StringLength(50,MinimumLength=1)]
         public string Description { get; set; }
+        [Required]
+        [Display(Name = "Slug")]
+        [StringLength(50, MinimumLength = 1)]
         public string Slug { get; set; }
 
         public virtual ICollection<SubCategory> SubCategories { get; set; }
+    }
+
+    public enum ControlsType
+    {
+        Text = 1,
+        CheckBox =2,
+        Select = 3,
+        TextArea = 3,
+        Image =4
     }
 
     [Table("SubCategory")]
@@ -48,7 +63,13 @@ namespace TestP3Image.FrontEnd.Mvc.Models
         [Key]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
+        [Required]
+        [Display(Name = "Description")]
+        [StringLength(50, MinimumLength = 1)]
         public string Description { get; set; }
+        [Required]
+        [Display(Name = "Slug")]
+        [StringLength(50, MinimumLength = 1)]
         public string slug { get; set; }
         public int CategoryId { get; set; }
 
@@ -62,10 +83,26 @@ namespace TestP3Image.FrontEnd.Mvc.Models
         [Key]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
+
+        [Required]
+        [Display(Name = "Field Order")]
         public int Order { get; set; }
+
+        [Required]
+        [Display(Name = "Field Description")]
+        [StringLength(50, MinimumLength = 1)]
         public string Description { get; set; }
-        public string Type { get; set; }
-        public string Values { get; set; }
+
+        [Required]
+        [Display(Name = "Type")]
+        public int Type { get; set; }
+
+        [Required]
+        [Display(Name = "Type Ennum")]
+        public ControlsType ennType { get; set; }
+        
+        public dynamic Values { get; set; }
+
         public int SubCategoryId { get; set; }
 
         public virtual SubCategory SubCategory { get; set; }
