@@ -1,0 +1,47 @@
+﻿@section AddToHead{
+    <link href="@Url.Content("~/Content/jquery.treeview.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/jquery.treeview.js")" type="text/javascript"></script>
+    
+    <script type="text/javascript">
+            $(document).ready(function () {
+                $('#CategoriesView').treeview({ collapsed: true });
+            });
+    </script>
+}
+@{
+    ViewBag.Title = "Category";
+}
+
+<h2>Categories : </h2>
+
+
+@helper TreeView(IEnumerable<TestP3Image.FrontEnd.Mvc.Models.NodeItem> items)
+{
+    foreach (var item in items)
+    {
+        <li>
+            @if (item.isChild)
+            {
+                <span id="@item.Id">@item.Description</span>
+            }
+            else
+            {
+                <span >@item.Description</span>
+                <ul>
+                    @TreeView(item.List)
+                </ul>
+            }
+        </li>
+    }
+
+}
+
+
+<ul id="CategoriesView" class="treeview-red">
+    @TreeView(Model)
+</ul>
+
+<p>
+    <a href="/Category/Create">Add a new Category</a>
+
+</p>

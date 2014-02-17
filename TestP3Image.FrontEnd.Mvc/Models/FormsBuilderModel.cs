@@ -107,4 +107,20 @@ namespace TestP3Image.FrontEnd.Mvc.Models
 
         public virtual SubCategory SubCategory { get; set; }
     }
+
+    public class NodeItem {
+        public NodeItem()
+        {
+
+
+        }
+        public int Id { get; set; }
+        public string Description { get; set; }
+        public string Type { get; set; }
+        public IList<NodeItem> List { get; private set; }
+        public bool isChild { get {
+            return this.List.Count == 0;
+        } }
+    }
+
 }
