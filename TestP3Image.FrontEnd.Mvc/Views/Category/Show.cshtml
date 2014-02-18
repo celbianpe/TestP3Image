@@ -1,0 +1,50 @@
+﻿@model TestP3Image.FrontEnd.Mvc.Models.Category
+@section AddToHead{
+    <link href="@Url.Content("~/Content/jquery.treeview.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/jquery.treeview.js")" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#CategoriesView').treeview({ collapsed: true });
+        });
+    </script>
+}
+@{
+    ViewBag.Title = "Show Category Detail";
+}
+
+<hgroup class="title">
+    <h1>@ViewBag.Title. </h1>
+</hgroup>
+
+@using (Html.BeginForm())
+{
+    
+    <fieldset>
+        <legend>Category Details</legend>
+        <ol>
+            <li>
+                @Html.LabelFor(m => m.Description)
+                @Html.TextBoxFor(m => m.Description, new {@readonly=true })
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Slug)
+                @Html.TextBoxFor(m => m.Slug, new { @readonly = true })
+            </li>
+        </ol>
+    
+        <p> <a href="/SubCategory/Create">Add a new Sub Category</a>
+        </p>
+    </fieldset>
+    
+
+}
+<hgroup class="title">
+    <h2>Entries Tree. </h2>
+</hgroup>
+
+    <ul id="CategoriesView" class="treeview-red">
+        @MyHelpers.TreeView(ViewBag.Tree)
+    </ul>
+
+    

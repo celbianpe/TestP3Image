@@ -24,6 +24,24 @@ namespace TestP3Image.FrontEnd.Mvc.Controllers
             return View(list);
         }
 
+
+        public ActionResult Show(int Id)
+        {
+            
+            List<Category> elementsList = new List<Category>();
+            Category detail;
+            using (var context = new FormsBuilderModel())
+            {
+                detail = context.Categories.Include("SubCategories.Fields").FirstOrDefault(t => t.Id == Id);
+               
+            }
+
+            ViewBag.Tree = detail.SubCategories.toNodeList();
+
+            return View(detail); 
+        
+        }
+
         public ActionResult Create()
         {
             return View();
