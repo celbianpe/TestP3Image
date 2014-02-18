@@ -37,6 +37,7 @@ namespace TestP3Image.FrontEnd.Mvc.Models
         public string Description { get; set; }
         [Required]
         [Display(Name = "Slug")]
+        [RegularExpression(@"^[\S]*$", ErrorMessage = "White space found")]
         [StringLength(50, MinimumLength = 1)]
         public string Slug { get; set; }
 
@@ -70,6 +71,7 @@ namespace TestP3Image.FrontEnd.Mvc.Models
         [Required]
         [Display(Name = "Slug")]
         [StringLength(50, MinimumLength = 1)]
+        [RegularExpression(@"^[\S]*$", ErrorMessage = "White space found")]
         public string slug { get; set; }
         public int CategoryId { get; set; }
 
@@ -117,9 +119,11 @@ namespace TestP3Image.FrontEnd.Mvc.Models
         public int Id { get; set; }
         public string Description { get; set; }
         public string Type { get; set; }
+
+        public string SlugTip { get; set; }
         public IList<NodeItem> List { get; private set; }
         public bool isChild { get {
-            return this.List.Count == 0;
+            return this.List == null;
         } }
     }
 

@@ -12,7 +12,10 @@
     ViewBag.Title = "Category";
 }
 
-<h2>Categories : </h2>
+<hgroup class="title">
+    <h1>@ViewBag.Title. </h1>
+    <h2>Entries Tree. </h2>
+</hgroup>
 
 
 @helper TreeView(IEnumerable<TestP3Image.FrontEnd.Mvc.Models.NodeItem> items)
@@ -20,17 +23,25 @@
     foreach (var item in items)
     {
         <li>
-            @if (item.isChild)
+           
+                @if (item.Type == "Categories")
+                {
+                <a href="/Category/Show/@item.Id"> <span id="@item.Id" title="click to showed Category ./@item.SlugTip">@item.Description</span> </a>
+                }
+                else if (item.Type == "SubCategories"){
+                <a href="/SubCategory/Show/@item.Id"> <span id="@item.Id" title="click to showed SubCategory ./@item.SlugTip">@item.Description</span> </a>
+                }
+                else 
+                {
+                <a href="/Field/Show/@item.Id"> <span id="@item.Id" title="click to showed fields ">@item.Description</span> </a>
+                }
+    
+           @if (!item.isChild)
             {
-                <span id="@item.Id">@item.Description</span>
-            }
-            else
-            {
-                <span >@item.Description</span>
                 <ul>
                     @TreeView(item.List)
                 </ul>
-            }
+           }
         </li>
     }
 

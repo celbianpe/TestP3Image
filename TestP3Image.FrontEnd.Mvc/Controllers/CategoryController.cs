@@ -24,12 +24,34 @@ namespace TestP3Image.FrontEnd.Mvc.Controllers
             return View(list);
         }
 
-
-        //public ActionResult Create()
-        //{
-        //    return View();
+        public ActionResult Create()
+        {
+            return View();
+        }
         
-        //}
+
+        [HttpPost]
+        public ActionResult Create(Category entry)
+        {
+            if (ModelState.IsValid)
+            { 
+                try
+                {
+                    using (var context = new FormsBuilderModel())
+                    {
+                        context.Categories.Add(entry);
+                        context.SaveChanges();
+                
+                    }
+                }
+                catch(Exception E){
+                     ModelState.AddModelError("Category", "Houston have a problem : " + E.Message);
+                     return View();       
+                }
+             
+            }
+            return RedirectToAction("Index");
+        }
 
 
     
