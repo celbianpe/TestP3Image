@@ -1,0 +1,36 @@
+﻿@model TestP3Image.FrontEnd.Mvc.Models.SubCategory
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>SubCategory</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Description)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Description)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.slug)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.slug)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Category.Description)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Category.Description)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,4 +1,4 @@
-﻿@model TestP3Image.FrontEnd.Mvc.Models.Category
+﻿@model TestP3Image.FrontEnd.Mvc.Models.SubCategory
 @section AddToHead{
     <link href="@Url.Content("~/Content/jquery.treeview.css")" rel="stylesheet" type="text/css" />
     <script src="@Url.Content("~/Scripts/jquery.treeview.js")" type="text/javascript"></script>
@@ -10,7 +10,7 @@
     </script>
 }
 @{
-    ViewBag.Title = "Show Category Detail";
+    ViewBag.Title = "Show Sub Category Detail";
 }
 
 <hgroup class="title">
@@ -19,38 +19,33 @@
 
 @using (Html.BeginForm())
 {
-    
+
     <fieldset>
-        <legend>Category Details</legend>
+        <legend>Sub-Category Details</legend>
         <ol>
             <li>
                 @Html.LabelFor(m => m.Description)
-                @Html.TextBoxFor(m => m.Description, new {@readonly=true })
+                @Html.TextBoxFor(m => m.Description, new { @readonly = true })
             </li>
             <li>
-                @Html.LabelFor(m => m.Slug)
-                @Html.TextBoxFor(m => m.Slug, new { @readonly = true })
+                @Html.LabelFor(m => m.slug)
+                @Html.TextBoxFor(m => m.slug, new { @readonly = true })
             </li>
         </ol>
 
         <p>
-            <a href="/SubCategories/Create">Add a new Sub Category</a>
+            <a href="/Field/Create">Add a new Field</a>
         </p>
-       
-        
-        
     </fieldset>
-    
+
 
 }
-
-
 <hgroup class="title">
     <h2>Entries Tree. </h2>
 </hgroup>
 
-    <ul id="CategoriesView" class="treeview-red">
-        @MyHelpers.TreeView(ViewBag.Tree)
-    </ul>
+<ul id="CategoriesView" class="treeview-red">
+    @MyHelpers.TreeView(ViewBag.Tree)
+</ul>
 
-    
+

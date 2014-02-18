@@ -1,28 +1,81 @@
-﻿@section AddToHead{
+﻿@model IEnumerable<TestP3Image.FrontEnd.Mvc.Models.Category>
+@section AddToHead{
+<link rel="stylesheet"
+      href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
     <link href="@Url.Content("~/Content/jquery.treeview.css")" rel="stylesheet" type="text/css" />
     <script src="@Url.Content("~/Scripts/jquery.treeview.js")" type="text/javascript"></script>
     
     <script type="text/javascript">
             $(document).ready(function () {
                 $('#CategoriesView').treeview({ collapsed: true });
+                $(document).tooltip({
+                    track: true
+                });
+            
+
             });
     </script>
+
 }
 @{
-    ViewBag.Title = "Category";
+    ViewBag.Title = "Administrate Categories";
 }
 
 <hgroup class="title">
     <h1>@ViewBag.Title. </h1>
-    <h2>Entries Tree. </h2>
+    <br />
+    <br />
+    <h2>Details List</h2>
 </hgroup>
 
 
-<ul id="CategoriesView" class="treeview-red">
-    @MyHelpers.TreeView(Model)
-</ul>
 
-<p>
-    <a href="/Category/Create">Add a new Category</a>
 
-</p>
+<div id="users-contain" >
+    <table id="users" class="ui-widget-content">
+        <tr class="ui-widget-header ">
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Slug)
+            </th>
+            <th>
+                Actions
+
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Slug)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+
+    </table>
+ </div>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+
+    <br />
+
+
+    <h3 title="Selected Node Item to show details">Items Tree</h3>
+    <ul id="CategoriesView" class="treeview-red">
+        @MyHelpers.TreeView(ViewBag.Tree)
+    </ul>
+

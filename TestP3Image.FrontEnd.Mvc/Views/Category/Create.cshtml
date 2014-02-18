@@ -1,34 +1,46 @@
 ﻿@model TestP3Image.FrontEnd.Mvc.Models.Category
+@section AddToHead{
+@Scripts.Render("~/bundles/jqueryval")
+@Scripts.Render("~/bundles/jquery")
+}
+
 @{
     ViewBag.Title = "Create Category";
 }
 
 <hgroup class="title">
-    <h1>@ViewBag.Title.</h1>
+    <br />
+
+    @*<h1>@ViewBag.Title.</h1>
+    <br />*@
     <h2>Create a new entry.</h2>
+    <br />
+    <br />
+
 </hgroup>
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    <fieldset>
-        <legend>Creating Form</legend>
-        <ol>
-            <li>
-                @Html.LabelFor(m => m.Description)
-                @Html.TextBoxFor(m => m.Description)
-            </li>
-            <li>
-                @Html.LabelFor(m => m.Slug)
-                @Html.TextBoxFor(m => m.Slug)
-            </li>
-        </ol>
-        <input type="submit" value="Create" />
-    </fieldset>
-    @Html.ValidationSummary()
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <fieldset>
+            <legend>Creating Form</legend>
+            <ol>
+                <li>
+                    @Html.LabelFor(m => m.Description)
+                    @Html.TextBoxFor(m => m.Description)
+                </li>
+                <li>
+                    @Html.LabelFor(m => m.Slug)
+                    @Html.TextBoxFor(m => m.Slug)
+                </li>
+            </ol>
 
-}
+            <input type="submit" value="Create" />
+        </fieldset>
+        @Html.ValidationSummary()
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+    }
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+

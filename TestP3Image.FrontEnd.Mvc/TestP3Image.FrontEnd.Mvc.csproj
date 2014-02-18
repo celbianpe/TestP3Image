@@ -185,7 +185,10 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\FieldsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SubCategoriesController.cs" />
+    <Compile Include="Controllers\SubCategoryController_1.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -196,7 +199,18 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\images\plus.gif" />
+    <Content Include="Content\images\treeview-default-line.gif" />
+    <Content Include="Content\images\treeview-default.gif" />
+    <Content Include="Content\images\treeview-famfamfam-line.gif" />
+    <Content Include="Content\images\treeview-famfamfam.gif" />
+    <Content Include="Content\images\treeview-red-line.gif" />
+    <Content Include="Content\images\treeview-red.gif" />
     <Content Include="Content\jquery.treeview.css" />
+    <Content Include="Images\AsyncTreeNode.png" />
+    <Content Include="Content\images\file.gif" />
+    <Content Include="Content\images\folder.gif" />
+    <Content Include="Content\images\minus.gif" />
     <Content Include="Scripts\jquery.treeview.js" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -313,6 +327,22 @@
     <Content Include="Views\Category\Index.cshtml" />
     <Content Include="Views\Category\Create.cshtml" />
     <Content Include="Views\Category\Show.cshtml" />
+    <Content Include="Views\SubCategory\Create.cshtml" />
+    <Content Include="Views\SubCategory\Show.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\SubCategory.cshtml" />
+    <Content Include="Views\Fields\Index.cshtml" />
+    <Content Include="Views\Fields\Details.cshtml" />
+    <Content Include="Views\Fields\Create.cshtml" />
+    <Content Include="Views\Fields\Edit.cshtml" />
+    <Content Include="Views\Fields\Delete.cshtml" />
+    <Content Include="Views\SubCategories\Index.cshtml" />
+    <Content Include="Views\SubCategories\Details.cshtml" />
+    <Content Include="Views\SubCategories\Create.cshtml" />
+    <Content Include="Views\SubCategories\Edit.cshtml" />
+    <Content Include="Views\SubCategories\Delete.cshtml" />
+    <Content Include="Views\Category\Details.cshtml" />
+    <Content Include="Views\Category\Delete.cshtml" />
+    <Content Include="Views\Category\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

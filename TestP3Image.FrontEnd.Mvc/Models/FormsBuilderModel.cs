@@ -13,15 +13,17 @@ namespace TestP3Image.FrontEnd.Mvc.Models
 
         public FormsBuilderModel() : base("FormsBuilderConnection")
         {
+        
         }
-
+        
         public DbSet<Category> Categories { get; set; }
         public DbSet<SubCategory> SubCategories { get; set; }
         public DbSet<Field> Fields { get; set; }
+        
     }
 
     [Table("Category")]
-    public partial class Category
+    public  class Category
     {
         public Category()
         {
@@ -32,11 +34,11 @@ namespace TestP3Image.FrontEnd.Mvc.Models
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         [Required]
-        [Display(Name = "Description")]
+        [Display(Name = "Category Description")]
         [StringLength(50,MinimumLength=1)]
         public string Description { get; set; }
         [Required]
-        [Display(Name = "Slug")]
+        [Display(Name = "Category Slug")]
         [RegularExpression(@"^[\S]*$", ErrorMessage = "White space found")]
         [StringLength(50, MinimumLength = 1)]
         public string Slug { get; set; }
@@ -65,14 +67,15 @@ namespace TestP3Image.FrontEnd.Mvc.Models
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         [Required]
-        [Display(Name = "Description")]
+        [Display(Name = "Sub Category Description")]
         [StringLength(50, MinimumLength = 1)]
         public string Description { get; set; }
         [Required]
-        [Display(Name = "Slug")]
+        [Display(Name = "Sub category Slug")]
         [StringLength(50, MinimumLength = 1)]
         [RegularExpression(@"^[\S]*$", ErrorMessage = "White space found")]
         public string slug { get; set; }
+        
         public int CategoryId { get; set; }
 
         public virtual Category Category { get; set; }
@@ -96,11 +99,11 @@ namespace TestP3Image.FrontEnd.Mvc.Models
         public string Description { get; set; }
 
         [Required]
-        [Display(Name = "Type")]
+        [Display(Name = "Field Type")]
         public int Type { get; set; }
 
         [Required]
-        [Display(Name = "Type Ennum")]
+        [Display(Name = "Field Ennum Type")]
         public ControlsType ennType { get; set; }
         
         public dynamic Values { get; set; }
@@ -113,7 +116,7 @@ namespace TestP3Image.FrontEnd.Mvc.Models
     public class NodeItem {
         public NodeItem()
         {
-
+            this.List = new List<NodeItem>();
 
         }
         public int Id { get; set; }
@@ -123,7 +126,7 @@ namespace TestP3Image.FrontEnd.Mvc.Models
         public string SlugTip { get; set; }
         public IList<NodeItem> List { get; private set; }
         public bool isChild { get {
-            return this.List == null;
+            return this.List.Count() == 0;
         } }
     }
 
